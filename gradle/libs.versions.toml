@@ -1,0 +1,80 @@
+[versions]
+lifecycle = "2.10.0"
+agp = "9.0.1"
+kotlin = "2.3.10"
+jetbrains-compose = "1.10.2"
+
+# Android libs
+androidx-activityCompose = "1.12.4"
+navigation = "2.9.7"
+camerax = "1.5.2"
+play-services-location = "21.3.0"
+androidx-security = "1.1.0"
+
+# Kotlin libs
+kotlinx-coroutines = "1.10.2"
+kotlinx-serialization = "1.10.0"
+ktor = "3.4.1"
+kmp-nativecoroutines = "1.0.1"
+
+# Tools
+ksp = "2.3.5"
+
+# Auth
+appauth = "0.11.1"
+
+[libraries]
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+# Kotlin test (let Kotlin/Gradle manage the matching version)
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }
+
+# AndroidX / Google
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+
+gms-play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "play-services-location" }
+
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "camerax" }
+
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "androidx-security" }
+
+# AppAuth (OIDC)
+appauth = { module = "net.openid:appauth", version.ref = "appauth" }
+
+# Coroutines / Serialization
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+# Ktor
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-websockets = { module = "io.ktor:ktor-client-websockets", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+
+# KMP NativeCoroutines
+kmp-nativecoroutines-core = { module = "com.rickclephas.kmp:kmp-nativecoroutines-core", version.ref = "kmp-nativecoroutines" }
+kmp-nativecoroutines-annotations = { module = "com.rickclephas.kmp:kmp-nativecoroutines-annotations", version.ref = "kmp-nativecoroutines" }
+kmp-nativecoroutines-ksp = { module = "com.rickclephas.kmp:kmp-nativecoroutines-ksp", version.ref = "kmp-nativecoroutines" }
+
+[plugins]
+# Kotlin / Android
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+
+# Compose
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Serialization + KSP
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
