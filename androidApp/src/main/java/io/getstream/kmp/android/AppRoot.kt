@@ -9,29 +9,13 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun AppRoot(onGoogleLogin: () -> Unit, onAppleLogin: () -> Unit) {
-    val scope = rememberCoroutineScope()
-    var loggedIn by remember { mutableStateOf(false) }
+    val tokenStore = AndroidGraph.shared.tokenStore
+    val tokens by tokenStore.tokens.collectAsState() // reactive
 
-    LaunchedEffect(Unit) {
-        loggedIn = AndroidGraph.shared.tokenStore.getTokens() != null
-    }
-
-    if (!loggedIn) {
+    if (tokens == null) {
         LoginScreen(
-            onGoogleLogin = {
-                onGoogleLogin()
-                scope.launch {
-                    kotlinx.coroutines.delay(1200)
-                    loggedIn = AndroidGraph.shared.tokenStore.getTokens() != null
-                }
-            },
-            onAppleLogin = {
-                onAppleLogin()
-                scope.launch {
-                    kotlinx.coroutines.delay(1200)
-                    loggedIn = AndroidGraph.shared.tokenStore.getTokens() != null
-                }
-            }
+            onGoogleLogin = onGoogleLogin,
+            onAppleLogin = onAppleLogin
         )
     } else {
         MainTabs()

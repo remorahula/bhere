@@ -53,8 +53,9 @@ class HttpApi(
     gender: GenderPreference?,
     cursor: String? = null,
     limit: Int = 30
-  ): NearbyRealsResponse =
-    client.get("/v1/reals/nearby") {
+  ): NearbyRealsResponse {
+
+    val response = client.get("/v1/reals/nearby") {
       auth()
       parameter("lat", lat)
       parameter("lng", lng)
@@ -62,7 +63,12 @@ class HttpApi(
       gender?.let { parameter("gender", it.name) }
       cursor?.let { parameter("cursor", it) }
       parameter("limit", limit)
-    }.body()
+    }
+
+    println("REmo11 " + response.body())
+
+    return response.body()
+  }
 
   suspend fun uploadReal(
     frontJpeg: ByteArray,
